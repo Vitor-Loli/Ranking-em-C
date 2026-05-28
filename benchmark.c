@@ -28,7 +28,7 @@ static void pontuacoes_unicas(int *vetor, int n) {
 }
 
 void executar_benchmark(int n_operacoes) {
-    printf("       BENCHMARK: %6d operacoes\n", n_operacoes);
+    printf("\n\n       BENCHMARK: %6d operacoes\n", n_operacoes);
 
     srand(42);
 

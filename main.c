@@ -27,82 +27,6 @@ static void imprimir_top10_rn(ArvoreRN *arvore) {
         printf("  %3d.  %-22s  %d\n", i + 1, melhores[i]->nome, melhores[i]->pontuacao);
 }
 
-/* Demo AVL */
-
-static void demo_avl(void) {
-    printf("   DEMONSTRACAO - Arvore AVL\n");
-
-    ArvoreAVL *arvore = avl_criar();
-
-    avl_inserir(arvore, 1500, "Ana");
-    avl_inserir(arvore, 2300, "Bruno");
-    avl_inserir(arvore,  850, "Carlos");
-    avl_inserir(arvore, 3100, "Diana");
-    avl_inserir(arvore, 1750, "Eduardo");
-    avl_inserir(arvore, 2900, "Fernanda");
-    avl_inserir(arvore,  600, "Gabriel");
-    avl_inserir(arvore, 4200, "Helena");
-    avl_inserir(arvore, 3800, "Igor");
-    avl_inserir(arvore, 2100, "Julia");
-    avl_inserir(arvore, 5000, "Kaio");
-    avl_inserir(arvore, 1200, "Larissa");
-
-    printf("\n[Apos 12 insercoes]");
-    imprimir_top10_avl(arvore);
-    printf("  Rotacoes acumuladas: %d\n", arvore->cont_rotacoes);
-
-    int chave = 2300;
-    NoAVL *encontrado = avl_buscar(arvore, chave);
-    printf("\n[Busca por pontuacao %d] -> %s\n",
-           chave, encontrado ? encontrado->nome : "nao encontrado");
-
-    printf("[Removendo Bruno (2300) e Kaio (5000)]\n");
-    avl_remover(arvore, 2300);
-    avl_remover(arvore, 5000);
-    imprimir_top10_avl(arvore);
-    printf("  Rotacoes acumuladas: %d\n", arvore->cont_rotacoes);
-
-    avl_destruir(arvore);
-}
-
-/* Demo Rubro-Negra*/
-
-static void demo_rn(void) {
-    printf("  DEMONSTRACAO - Arvore Rubro-Negra\n");
-
-    ArvoreRN *arvore = rn_criar();
-
-    rn_inserir(arvore, 1500, "Ana");
-    rn_inserir(arvore, 2300, "Bruno");
-    rn_inserir(arvore,  850, "Carlos");
-    rn_inserir(arvore, 3100, "Diana");
-    rn_inserir(arvore, 1750, "Eduardo");
-    rn_inserir(arvore, 2900, "Fernanda");
-    rn_inserir(arvore,  600, "Gabriel");
-    rn_inserir(arvore, 4200, "Helena");
-    rn_inserir(arvore, 3800, "Igor");
-    rn_inserir(arvore, 2100, "Julia");
-    rn_inserir(arvore, 5000, "Kaio");
-    rn_inserir(arvore, 1200, "Larissa");
-
-    printf("\n[Apos 12 insercoes]");
-    imprimir_top10_rn(arvore);
-    printf("  Rotacoes acumuladas: %d\n", arvore->cont_rotacoes);
-
-    int chave = 3100;
-    NoRN *encontrado = rn_buscar(arvore, chave);
-    printf("\n[Busca por pontuacao %d] -> %s\n",
-           chave, encontrado ? encontrado->nome : "nao encontrado");
-
-    printf("[Removendo Diana (3100) e Kaio (5000)]\n");
-    rn_remover(arvore, 3100);
-    rn_remover(arvore, 5000);
-    imprimir_top10_rn(arvore);
-    printf("  Rotacoes acumuladas: %d\n", arvore->cont_rotacoes);
-
-    rn_destruir(arvore);
-}
-
 /* Menu modo manual */
 
 static void imprimir_menu(void) {
@@ -200,8 +124,6 @@ int main(void) {
     printf("       SISTEMA DE RANKING EM TEMPO REAL\n");
     printf("    AVL  vs  Arvore Rubro-Negra  -  Comparativo\n");
 
-    demo_avl();
-    demo_rn();
     executar_benchmark(10000);
     modo_interativo();
 
